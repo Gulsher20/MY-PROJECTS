@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech</title>
+    <style>
+body{  
+     font-size:40px;
+     margin-top: 200px;
+    color: brown;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 220;
+}
+textarea{
+    text-align: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 220;
+    color: black;
+    border: 8px solid brown;
+    border-radius: 8px;
+    font-size:35px;
+    padding:45px;
+}button{
+    font-size:26px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 220;
+padding: 25px;
+border-radius: 4px;
+    color:white;
+    background-color: brown;;
+    width: 300px;
+}
+    </style>
+</head>
+<body>
+    <h1>Text-to-Speech Example</h1>
+    <textarea id="textToSpeak" rows="4" cols="50" placeholder="Enter text to speak"></textarea>
+    <br>
+    <button id="speakButton">Speak</button>
+
+    <script>
+        const textToSpeak = document.getElementById("textToSpeak");
+        const speakButton = document.getElementById("speakButton");
+
+        // Check if the Speech Synthesis API is available in the browser
+        if ('speechSynthesis' in window) {
+            const synth = window.speechSynthesis;
+            
+            speakButton.addEventListener("click", () => {
+                const text = textToSpeak.value;
+                const utterance = new SpeechSynthesisUtterance(text);
+                synth.speak(utterance);
+            });
+        } else {
+            alert("Text-to-speech is not supported in this browser.");
+        }
+    </script>
+</body>
+</html>

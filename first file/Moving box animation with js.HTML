@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 300px;
+            width: 300px;
+            background-color: pink;
+            /* position: relative; Added to use absolute positioning */
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+</body>
+<script>
+    var left = 0;
+    var up = 0;
+    var target = document.querySelector("#box");
+    window.addEventListener('keydown', function(e) {
+        console.clear();
+
+        switch (e.key) {
+            case "ArrowLeft":
+                left = left - 15;
+                break;
+            case "ArrowRight":
+                left = left + 15;
+                break;
+            case "ArrowUp":
+                up = up - 15;
+                break;
+            case "ArrowDown":
+                up = up + 15;
+                break;
+            default:
+                console.log("You pressed the wrong button");
+                break;
+        }
+
+        target.style.marginLeft = left + "px";
+        target.style.marginTop = up + "px";
+    });
+</script>
+</html>

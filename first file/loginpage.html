@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">    
+
+	<style type="text/css">
+
+             body {
+            margin: 0;			background-color: #ccc;
+                    font-family: 'Russo One', sans-serif;
+                    margin: 0;
+            padding: 0;
+       
+		}.container{
+            background-image: url("https://wallpaperaccess.com/full/460863.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin:0%;
+    opacity: 1;
+    padding: 0;
+
+     
+}.h1 {
+    color:white;
+}
+
+
+		form {
+         
+            justify-content: center;
+            align-items: center;
+			background-color:transparent;
+			max-width: 500px;
+			margin: auto;
+			padding: 180px;
+			border-radius: 10px;
+			box-shadow: 3 2 10px rgba(102, 99, 99, 0.2);
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			text-align: center;
+            font-family: 'Russo One', sans-serif;
+
+		}
+
+		input[type="text"], input[type="email"], input[type="number"] {
+			width: 100%;
+			padding: 10px;
+			margin: 10px 0;
+			box-sizing: border-box;
+			border-radius: 5px;
+            border:4px solid red;
+            font-family: 'Russo One', sans-serif;
+
+		}
+
+		input[type="submit"] {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 15px 22px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius:2px;
+            font-family: 'Russo One', sans-serif;
+          
+		} h1{
+            color:white;
+        }label{
+            color:white;
+        }span {
+            color:red;}
+         .logo{
+            display: flex;
+    justify-content: start;
+    align-items: start;
+    /* margin: 15px 50px; */
+        } .navbar {
+            position: fixed;
+  left: 0; 
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  font-family: 'Russo One', sans-serif;
+  z-index: 999
+        }
+        .navbar a {
+            text-decoration: none;
+            color: red;
+            margin: 23px 34px;
+            font-size: 24px;
+            font-family: 'Russo One', sans-serif;
+         } .navbar a:hover{
+            color:white;
+            font-size:26px;
+        }
+
+        
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="home.html">HOME</a>
+            <a href="aboutus.html">ABOUT US </a>
+            <a href="shop.html">SHOP </a>
+            <a  href="mailto:gulsherbutt456@gmail.com?subject=HOW%20CAN%20WE%20HELP%20YOU">CONTACT US</a>
+            
+        </div>
+        
+	<form>
+		<h1>LOGIN <span>FORM</span></h1>
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" required>
+
+		<label for="email">Email:</label>
+		<input type="email" name="email" id="email" required>
+
+		<label for="number">Number:</label>
+		<input type="number" name="number" id="number" required>
+
+		<input type="submit" value="Login">
+	</form>
+</div>
+</body>
+</html>

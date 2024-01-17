@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="
+    UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.box{
+      
+    background-color:aqua;
+    font-size :45px;
+    color:black;
+    text-align:center
+}@media (max-width:400px){
+    #firstbox{
+        display:block;
+        background-color: green;
+        color:white;
+
+    } 
+    #secondbox, #thirdbox, #fourthbox {
+        display: none;
+        
+
+    }
+}
+@media (min-width:400px) and (max-width:600px) {
+    #secondbox{
+        display: block;
+        background-color:yellow;
+        color:black;
+    }
+    #firstbox, #thirdbox, #fourthbox {
+        display: none;
+    }
+        
+
+    }
+    @media (min-width:600px) and (max-width:800px) { 
+    #thirdbox{
+        display:block;
+        background-color:purple;
+        color:white;
+
+    }    #secondbox, #firstbox, #fourthbox {
+        display: none;}
+
+        
+
+    }
+@media (min-width:800px){
+    #fourthbox{
+        display:block;
+        background-color:brown;
+        color:white;
+
+    }    #firstbox, #secondbox, #thirdbox {
+        display: none;
+        
+        
+
+    }
+}
+</style>
+<body>
+ 
+    
+<div class="box" id="firstbox">i am an iphone </div>
+<div class="box" id="secondbox"> i am a tablet </div>
+<div class="box" id="thirdbox">i am a android</div>
+<div class="box" id="fourthbox">i am an pc computer screeen</div>
+</body>
+</html>

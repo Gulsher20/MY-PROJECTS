@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNAKE GAME</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+background:url(https://images.alphacoders.com/169/thumb-1920-169581.jpg);     
+       background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .head {
+            background: linear-gradient(rgb(230, 98, 120),rgb(136, 5, 77));
+            border: 4px solid black;    
+          }
+        
+        .food {
+            border:6px solid black;
+            border-radius: 97px;
+            background-color: rgb(180, 58, 58);
+        }
+
+        .snake {
+            background: linear-gradient(rgb(230, 98, 120),rgb(136, 5, 77))}
+
+        #container {
+            background: linear-gradient(rgb(119, 119, 194), rgb(235, 235, 111));
+            height: 90vmin;
+            width: 92vmin;
+            border: 4px solid rgb(155, 34, 34);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            grid-template-rows: repeat(18, 1fr);
+        }#scoreBox{
+             position: absolute; 
+            top:36px;
+            right:170px;
+            font-weight: bold;
+            font-size :39px;
+font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="scoreBox">SCORE:</div>  
+    <div id="container">
+  </div>
+    <script>
+        let inputDir = { x: 0, y: 0 };
+        let speed = 16;
+        let lastPaintTime = 0;
+        let snakeArr = [{ x: 13, y: 15 }];
+        let food = { x: 13, y: 17 }
+let score=0;
+        // game functions
+
+        function main(ctime) {
+            window.requestAnimationFrame(main);
+            if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
+                return;
+            }
+            lastPaintTime = ctime;
+            gameEngine();
+        }
+
+        function collide(snake) {
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+            return true;
+        }
+    }
+    if (snake[0].x >= 18 || snake[0].x <= 0 || snake[0].y >= 18 || snake[0].y <= 0) {
+        return true;
+    }
+    return false;
+}
+
+
+
+        
+
+        function gameEngine() {
+            // Implement the game logic here
+
+            if (collide(snakeArr)) {
+                inputDir = { x: 0, y: 0 };
+                alert("Game Over");
+                snakeArr = [{ x: 13, y: 15 }];
+                score = 0;
+            }
+            
+      
+
+            if (snakeArr[0].x === food.x && snakeArr[0].y === food.y) {
+         score += 1;
+         const scoreElement= document.getElementById('scoreBox')
+           scoreElement.innerHTML = "SCORE: " +""+ score;
+                snakeArr.unshift({
+                    x: snakeArr[0].x + inputDir.x,
+                    y: snakeArr[0].y + inputDir.y
+                });
+                let a = 2;
+                let b = 16;
+                food = {
+                    x: Math.round(a + (b - a) * Math.random()),
+                    y: Math.round(a + (b - a) * Math.random())
+                };
+            }
+
+            for (let i = snakeArr.length - 2; i >= 0; i--) {
+                snakeArr[i + 1] = { ...snakeArr[i] }
+            }
+            snakeArr[0].x += inputDir.x;
+            snakeArr[0].y += inputDir.y;
+
+            const container = document.getElementById('container');
+            container.innerHTML="";
+            const foodElement = document.createElement("div");
+            foodElement.style.gridColumnStart = food.x;
+            foodElement.style.gridRowStart = food.y;
+            foodElement.classList.add('food');
+            container.appendChild(foodElement);
+
+            snakeArr.forEach((e, index) => {
+                const snakeElement = document.createElement('div');
+                snakeElement.style.gridColumnStart = e.x;
+                snakeElement.style.gridRowStart = e.y;
+                if (index === 0) {
+                    snakeElement.classList.add('head');
+                } else {
+                    snakeElement.classList.add('snake');
+                }
+                container.appendChild(snakeElement);
+            });
+        }
+
+        window.requestAnimationFrame(main);
+        window.addEventListener('keydown', e => {
+            inputDir = { x: 0, y: 1 };
+            switch (e.key) {
+                case "ArrowUp":
+                    inputDir.x = 0;
+                    inputDir.y = -1;
+                    break;
+                case "ArrowDown":
+                    inputDir.x = 0;
+                    inputDir.y = 1;
+                    break;
+                    case "ArrowLeft":
+                     inputDir.x = -1;
+                     inputDir.y = 0;
+                     break;
+
+               case "ArrowRight":
+                    inputDir.x = 1;
+                    inputDir.y = 0;
+                    break;
+                default:
+            }
+        })
+    </script>
+</html>
